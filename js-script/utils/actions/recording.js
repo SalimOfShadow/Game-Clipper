@@ -1,4 +1,4 @@
-const { obs } = require('../../app');
+const { obs } = require('../connection/connect');
 const handleErrors = require('../handleErrors');
 
 async function recordingAction(action, cb, res) {

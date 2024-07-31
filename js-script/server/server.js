@@ -1,4 +1,4 @@
-const { obs } = require('../obs-api/websocketApi.js');
+const { obs } = require('../utils/connection/connect.js');
 const express = require('express');
 const app = express();
 const PORT = 4609;
@@ -18,7 +18,6 @@ obs.on('RecordStateChanged', (data) => {
 		// Perform actions after recording has finished converting
 	}
 });
-
 // Starts the web server once connected to the websocket
 obs.on('ConnectionOpened', async () => {
 	try {

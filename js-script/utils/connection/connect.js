@@ -1,4 +1,6 @@
-const connectWs = async (obs) => {
+const { default: OBSWebSocket } = require('obs-websocket-js');
+const obs = new OBSWebSocket();
+const connectWs = async () => {
 	try {
 		const { obsWebSocketVersion, negotiatedRpcVersion } = await obs.connect(
 			'ws://127.0.0.1:4455',
@@ -17,4 +19,4 @@ const connectWs = async (obs) => {
 	}
 };
 
-module.exports = connectWs;
+module.exports = { connectWs, obs };

@@ -1,4 +1,4 @@
-const { obs } = require('../../app.js');
+const { obs } = require('../connection/connect.js');
 const handleErrors = require('../handleErrors.js');
 const getSceneName = async () => {
 	try {

@@ -1,4 +1,4 @@
-const { obs } = require('../app.js');
+const { obs } = require('../utils/connection/connect.js');
 const { createNewScene } = require('../utils/scene-setup/scene.js');
 const {
 	isSourcePresent,
@@ -37,11 +37,17 @@ obs.on('Identified', () => {
 	}
 });
 
-obs.on('MediaInputActionTriggered', () => {
-	const divider = '_';
-	const dividerLine = divider * 50;
-	console.log(dividerLine);
-	console.log('Replay saved');
+obs.on('RecordStateChanged', (state) => {
+	if (state.outputActive == false && state.outputPath != null) {
+		console.log(state);
+	}
+	// Saved replay conversion initated, alert IPC
 });
-
+obs.on('ReplayBufferSaved', (buff) => {
+	console.log('This is the replay buffer : ');
+	console.log(buff);
+});
+obs.on('InputCreated', () => {
+	console.log('input created ');
+});
 module.exports = { obs };
